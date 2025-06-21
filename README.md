@@ -46,3 +46,48 @@ A full-stack authentication system with separate **Login** and **Signup** pages,
 ```bash
 git clone https://github.com/JeevithaPugazh/login-registration.git
 cd login-registration
+```
+## Setup Backend
+
+```bash
+cd auth-app-server
+npm install
+```
+
+### Create .env file:
+
+```bash
+PORT=3000
+ATLAS_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/auth-app
+JWT_SECRET=yourSuperSecretKey
+```
+### Start server:
+```bash
+cd auth-app-server
+npm install
+npm run dev
+
+```
+## Setup Frontend (Port: 5173)
+```bash
+cd auth-app-client
+npm install
+npm run dev
+```
+### Navigate to the app:
+
+Login page:
+👉 http://localhost:5173/login
+
+Signup page:
+👉 http://localhost:5173/signup
+
+### Authentication behavior:
+
+Access to /abcWebsite is restricted unless the user is logged in.
+
+If a user attempts to visit a protected route without a valid token, they are redirected to the login page.
+
+After login, the JWT token is securely stored in sessionStorage.
+
+On logout, the token is cleared from storage, and the user is redirected back to the login page.
