@@ -47,5 +47,29 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+router.get('/user', async (req, res) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) {
+    res.status(401).json({ error: "Token required" });
+    return;
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
+    if (err) {
+      res.status(403).json({ error: "Invalid token" });
+      return;
+    }
+
+    try {
+      const fullUser = await User.findById(user.id).select("username");
+      res.status(200).json(fullUser); // ✅ send { username: "..." }
+    } catch (error) {
+      res.status(500).json({ error: "User fetch failed" });
+    }
+  });
+});
+
 
 module.exports = router;

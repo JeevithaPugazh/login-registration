@@ -26,6 +26,8 @@ A full-stack authentication system with separate **Login** and **Signup** pages,
 - Tailwind CSS (CDN)
 - LocalStorage for token management
 
+---
+
 ### Backend
 - Node.js
 - Express
@@ -36,3 +38,11 @@ A full-stack authentication system with separate **Login** and **Signup** pages,
 - CORS
 
 ---
+
+## 🛠️ Installation
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/JeevithaPugazh/login-registration.git
+cd login-registration
